@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { ExamplePlugin } from './definitions';
+import type { CapacitorMediaPlugin } from './definitions';
 
-const Example = registerPlugin<ExamplePlugin>('Example', {
-  web: () => import('./web').then(m => new m.ExampleWeb()),
+const CapacitorMedia = registerPlugin<CapacitorMediaPlugin>('Example', {
+  web: () => import('./web').then(m => new m.CapacitorMediaWeb()),
 });
 
 export * from './definitions';
-export { Example };
+export { CapacitorMedia };

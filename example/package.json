@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@capacitor/core": "latest",
-    "@capacitor/camera": "latest",
     "@capacitor/splash-screen": "latest",
     "@cbechstein-digital/capacitor-media": "file:..",
     "@capacitor/ios": "^5.0.0",
