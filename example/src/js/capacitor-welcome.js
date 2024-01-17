@@ -90,7 +90,7 @@ window.customElements.define(
       const self = this;
       self.shadowRoot.querySelector('#take-photo').addEventListener('click', async function (e) {
           console.log('Method start')
-          CapacitorMedia.getLatestVideoThumbnail().then(({ value }) => console.log(value))
+          CapacitorMedia.getLatestVideoThumbnail({ albumName: 'CB Creator' }).then(({ value }) => console.log(value))
           console.log('Method end')
       });
     }

@@ -1,9 +1,9 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { CapacitorMediaPlugin } from './definitions';
+import type {CapacitorMediaPlugin, GetLatestVideoThumbnailOptions} from './definitions';
 
 export class CapacitorMediaWeb extends WebPlugin implements CapacitorMediaPlugin {
-  async getLatestVideoThumbnail(): Promise<{ value: string }> {
-    return { value: 'Not implemented' };
+  async getLatestVideoThumbnail(options: GetLatestVideoThumbnailOptions): Promise<{ value: string }> {
+    return { value: `[CapacitorMedia] ${options.albumName} – The plugin is not implemented on web` };
   }
 }
