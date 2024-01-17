@@ -15,10 +15,6 @@
   ],
   "author": "",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cbechstein-digital/capacitor-media.git.git"
-  },
   "bugs": {
     "url": "https://github.com/cbechstein-digital/capacitor-media.git/issues"
   },
