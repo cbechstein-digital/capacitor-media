@@ -5,15 +5,6 @@ on:
     branches:
       - main
 jobs:
-  install-dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18.x'
-      - run: npm ci
-
   version-increase:
     needs: install-dependencies
     runs-on: ubuntu-latest
@@ -32,6 +23,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18.x'
+      - run: |
+          git config --global user.name "${GITHUB_ACTOR_ID}" 
+          git config user.email "${GITHUB_ACTOR_ID}@users.noreply.github.com"
       - run: npm version patch
         if: ${{ env.PATCH == 'true' }}
       - run: npm version minor
@@ -40,9 +34,6 @@ jobs:
         if: ${{ env.MAJOR == 'true' }}
       - run: npm version prerelease
         if: ${{ env.PRERELEASE == 'true' }}
-      - run: |
-          git config --global user.name "${GITHUB_ACTOR_ID}" 
-          git config user.email "${GITHUB_ACTOR_ID}@users.noreply.github.com"
       - run: |
           VERSION=$(node -p "require('./package.json').version")
           git add package.json
