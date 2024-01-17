@@ -1,6 +1,6 @@
 {
   "name": "@cbechstein-digital/capacitor-media",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A capacitor plugin for interacting with the media library",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
