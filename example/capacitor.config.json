@@ -1,11 +1,5 @@
 {
   "appId": "com.example.plugin",
-  "appName": "example",
-  "bundledWebRuntime": false,
-  "webDir": "dist",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  }
+  "appName": "capacitor-media-example",
+  "webDir": "dist"
 }
