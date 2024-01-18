@@ -4,14 +4,14 @@ import Photos
 import AVFoundation
 
 @objc public class CapacitorMedia: NSObject {
-    @objc public func getLatestVideoThumbnail(albumName: String, completion: @escaping (String?) -> Void) {
+    @objc public func getLatestVideoThumbnailFromAlbum(albumName: String, completion: @escaping (String?) -> Void) {
         PHPhotoLibrary.requestAuthorization { (status: PHAuthorizationStatus) in
             DispatchQueue.main.async {
                 switch status {
                     case .authorized:
                         self.fetchAlbum(withName: albumName) { album in
                             if let album = album {
-                                self.fetchLatestVideoThumbnail(from: album, completion: completion)
+                                self.fetchLatestVideoThumbnailFromAlbum(from: album, completion: completion)
                             } else {
                                 completion(nil)
                             }
@@ -37,7 +37,7 @@ import AVFoundation
         }
     }
     
-    private func fetchLatestVideoThumbnail(from album: PHAssetCollection, completion: @escaping (String?) -> Void) {
+    private func fetchLatestVideoThumbnailFromAlbum(from album: PHAssetCollection, completion: @escaping (String?) -> Void) {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.video.rawValue)

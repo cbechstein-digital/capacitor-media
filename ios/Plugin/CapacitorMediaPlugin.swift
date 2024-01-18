@@ -9,12 +9,12 @@ import Capacitor
 public class CapacitorMediaPlugin: CAPPlugin {
     private let implementation = CapacitorMedia()
     
-    @objc func getLatestVideoThumbnail(_ call: CAPPluginCall) {
+    @objc func getLatestVideoThumbnailFromAlbum(_ call: CAPPluginCall) {
         guard let albumName = call.getString("albumName") else {
             call.reject("Album name should be provided")
             return
         }
-        implementation.getLatestVideoThumbnail(albumName: albumName) { base64String in
+        implementation.getLatestVideoThumbnailFromAlbum(albumName: albumName) { base64String in
             if let base64String = base64String {
                 call.resolve([
                     "value": base64String

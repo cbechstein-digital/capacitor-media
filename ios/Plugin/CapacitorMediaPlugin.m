@@ -4,5 +4,5 @@
 // Define the plugin using the CAP_PLUGIN Macro, and
 // each method the plugin supports using the CAP_PLUGIN_METHOD macro.
 CAP_PLUGIN(CapacitorMediaPlugin, "CapacitorMedia",
-           CAP_PLUGIN_METHOD(getLatestVideoThumbnail, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(getLatestVideoThumbnailFromAlbum, CAPPluginReturnPromise);
 )

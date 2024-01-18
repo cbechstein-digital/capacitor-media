@@ -1,7 +1,7 @@
 export interface CapacitorMediaPlugin {
-  getLatestVideoThumbnail(options: GetLatestVideoThumbnailOptions): Promise<{ value: string }>
+  getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOptions): Promise<{ value: string }>
 }
 
-export interface GetLatestVideoThumbnailOptions {
+export interface GetLatestVideoThumbnailFromAlbumOptions {
   albumName: string
 }
