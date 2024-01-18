@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "npx ng",
     "start": "ng serve",
-    "preinstall:capacitor-media": "cd .. && npm run build",
-    "build": "npm run preinstall:capacitor-media && npm ci && ng build && npx cap sync",
+    "preinstall:capacitor-media": "cd .. && npm ci && npm run build",
+    "build": "rm -rf .angular && npm run preinstall:capacitor-media && npm ci && ng build && npx cap sync",
     "open:ios": "npx cap open ios",
     "open:android": "npx cap open android",
     "watch": "ng build --watch --configuration development",
