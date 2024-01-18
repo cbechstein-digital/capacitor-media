@@ -76,6 +76,17 @@ public class CapacitorMediaPlugin extends Plugin {
             call.reject("Album name is required.");
             return;
         }
+        JSObject size = call.getObject("size", new JSObject());
+        Integer width = size.getInteger("width");
+        if (width == null) {
+            call.reject("Width is required.");
+            return;
+        }
+        Integer height = size.getInteger("height");
+        if (height == null) {
+            call.reject("Height is required.");
+            return;
+        }
 
         Log.d(TAG, "Querying video for album: " + albumName);
 
@@ -105,7 +116,7 @@ public class CapacitorMediaPlugin extends Plugin {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     thumbnail =
                             getContext().getContentResolver().loadThumbnail(
-                                    contentUri, new Size(200, 200), null);
+                                    contentUri, new Size(width, height), null);
                 } else {
                     String path = contentUri.getPath();
                     if (path != null) {

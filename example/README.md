@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
 
+## Usage
+
+The app is provided with convenience scripts for fast setup. After you have cloned the repo,
+the only script that you need to run in the example project is:
+```bash
+npm run build
+```
+This takes of installing all dependencies, building and syncing in the plugin and in the project. After the script has completed:
+```bash
+// opens Xcode
+npm run open:ios
+
+// opens Android Studio
+npm run open:android
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
