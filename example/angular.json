@@ -27,7 +27,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.png",
+                "input": "node_modules/@cbechstein-digital/capacitor-media/src/assets/web/",
+                "output": "./assets/plugins/capacitor-media/web"
+              }
             ],
             "styles": [
               "src/styles.scss",

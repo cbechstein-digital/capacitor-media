@@ -9,8 +9,8 @@
       <ion-row class="ion-justify-content-center">
         <ion-button (click)="getVideoThumbnailFromAlbum('CB Creator')">Load thumbnail</ion-button>
       </ion-row>
-      <ion-row *ngIf="thumbnailSource$ | async as source">
-        <img [ngSrc]="source" [width]="200" [height]="200">
+      <ion-row *ngIf="thumbnailSource$ | async as source" class="ion-justify-content-center">
+        <img [src]="source" [width]="200" [height]="200">
       </ion-row>
     </ion-grid>
   </ion-content>

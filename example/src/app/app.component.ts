@@ -16,7 +16,7 @@ import {Subject} from "rxjs";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [IonApp, IonContent, IonHeader, IonToolbar, IonTitle, AsyncPipe, NgIf, IonGrid, IonRow, IonButton, NgOptimizedImage],
+  imports: [IonApp, IonContent, IonHeader, IonToolbar, IonTitle, AsyncPipe, NgIf, IonGrid, IonRow, IonButton],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
