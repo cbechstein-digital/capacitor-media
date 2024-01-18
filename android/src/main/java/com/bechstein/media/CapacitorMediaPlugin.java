@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -98,9 +99,25 @@ public class CapacitorMediaPlugin extends Plugin {
                 int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
                 long id = cursor.getLong(idColumn);
                 Uri contentUri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
-                Bitmap thumbnail =
-                        getContext().getContentResolver().loadThumbnail(
-                                contentUri, new Size(200, 200), null);
+
+                Bitmap thumbnail = null;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    thumbnail =
+                            getContext().getContentResolver().loadThumbnail(
+                                    contentUri, new Size(200, 200), null);
+                } else {
+                    String path = contentUri.getPath();
+                    if (path != null) {
+                        thumbnail = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Images.Thumbnails.MINI_KIND);
+                    }
+                }
+
+                if (thumbnail == null) {
+                    call.reject("Thumbnail return null");
+                    return;
+                }
+
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                 byte[] byteArray = byteArrayOutputStream .toByteArray();
