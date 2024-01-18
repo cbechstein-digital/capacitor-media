@@ -1,0 +1,17 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar [color]="'primary'">
+      <ion-title>Capacitor Media</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-button (click)="getVideoThumbnailFromAlbum('CB Creator')">Load thumbnail</ion-button>
+      </ion-row>
+      <ion-row *ngIf="thumbnailSource$ | async as source">
+        <img [ngSrc]="source" [width]="200" [height]="200">
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>

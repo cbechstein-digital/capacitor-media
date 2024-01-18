@@ -13,7 +13,7 @@ npx cap sync
 
 <docgen-index>
 
-* [`getLatestVideoThumbnail(...)`](#getlatestvideothumbnail)
+* [`getLatestVideoThumbnailFromAlbum(...)`](#getlatestvideothumbnailfromalbum)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -21,15 +21,15 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### getLatestVideoThumbnail(...)
+### getLatestVideoThumbnailFromAlbum(...)
 
 ```typescript
-getLatestVideoThumbnail(options: GetLatestVideoThumbnailOptions) => Promise<{ value: string; }>
+getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOptions) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                                                                      |
-| ------------- | ----------------------------------------------------------------------------------------- |
-| **`options`** | <code><a href="#getlatestvideothumbnailoptions">GetLatestVideoThumbnailOptions</a></code> |
+| Param         | Type                                                                                                        |
+| ------------- | ----------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#getlatestvideothumbnailfromalbumoptions">GetLatestVideoThumbnailFromAlbumOptions</a></code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -39,7 +39,7 @@ getLatestVideoThumbnail(options: GetLatestVideoThumbnailOptions) => Promise<{ va
 ### Interfaces
 
 
-#### GetLatestVideoThumbnailOptions
+#### GetLatestVideoThumbnailFromAlbumOptions
 
 | Prop            | Type                |
 | --------------- | ------------------- |
