@@ -14,7 +14,11 @@ public class CapacitorMediaPlugin: CAPPlugin {
             call.reject("Album name should be provided")
             return
         }
-        implementation.getLatestVideoThumbnailFromAlbum(albumName: albumName) { base64String in
+        guard let size: JSObject = call.getObject("size") else {
+            call.reject("Size should be provided")
+            return
+        }
+        implementation.getLatestVideoThumbnailFromAlbum(albumName: albumName, width: (size["width"] as? Int)!, height: (size["height"] as? Int)!) { base64String in
             if let base64String = base64String {
                 call.resolve([
                     "value": base64String

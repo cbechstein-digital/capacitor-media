@@ -4,14 +4,14 @@ import Photos
 import AVFoundation
 
 @objc public class CapacitorMedia: NSObject {
-    @objc public func getLatestVideoThumbnailFromAlbum(albumName: String, completion: @escaping (String?) -> Void) {
+    @objc public func getLatestVideoThumbnailFromAlbum(albumName: String, width: Int, height: Int, completion: @escaping (String?) -> Void) {
         PHPhotoLibrary.requestAuthorization { (status: PHAuthorizationStatus) in
             DispatchQueue.main.async {
                 switch status {
                     case .authorized:
-                        self.fetchAlbum(withName: albumName) { album in
+                        self.fetchAlbum(withName: albumName, withWidth: width, withHeight: height) { album in
                             if let album = album {
-                                self.fetchLatestVideoThumbnailFromAlbum(from: album, completion: completion)
+                                self.fetchLatestVideoThumbnailFromAlbum(from: album, withWidth: width, withHeight: height, completion: completion)
                             } else {
                                 completion(nil)
                             }
@@ -25,7 +25,7 @@ import AVFoundation
         }
     }
     
-    private func fetchAlbum(withName albumName: String, completion: @escaping (PHAssetCollection?) -> Void) {
+    private func fetchAlbum(withName albumName: String, withWidth width: Int, withHeight height: Int, completion: @escaping (PHAssetCollection?) -> Void) {
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
         let collections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
@@ -37,7 +37,7 @@ import AVFoundation
         }
     }
     
-    private func fetchLatestVideoThumbnailFromAlbum(from album: PHAssetCollection, completion: @escaping (String?) -> Void) {
+    private func fetchLatestVideoThumbnailFromAlbum(from album: PHAssetCollection, withWidth width: Int, withHeight height: Int, completion: @escaping (String?) -> Void) {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.video.rawValue)
@@ -49,7 +49,7 @@ import AVFoundation
             requestOptions.isSynchronous = false
             requestOptions.deliveryMode = .highQualityFormat
             
-            let targetSize = CGSize(width: 200, height: 200)
+            let targetSize = CGSize(width: width, height: height)
             
             imageManager.requestImage(for: latestVideo,
                                       targetSize: targetSize,

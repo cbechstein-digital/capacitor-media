@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf, NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, NgIf} from "@angular/common";
 import { Component } from '@angular/core';
 import {CapacitorMedia} from "@cbechstein-digital/capacitor-media";
 import {
@@ -24,7 +24,13 @@ export class AppComponent {
   readonly thumbnailSource$ = this.thumbnailSourceSubject.asObservable();
 
   getVideoThumbnailFromAlbum(albumName: string): void {
-    CapacitorMedia.getLatestVideoThumbnailFromAlbum({ albumName: albumName })
+    CapacitorMedia.getLatestVideoThumbnailFromAlbum({
+      albumName: albumName,
+      size: {
+        width: 200,
+        height: 200
+      }
+    })
       .then((result: { value: string }) => this.thumbnailSourceSubject.next(result.value))
       .catch((error: any) => console.warn(error));
   }

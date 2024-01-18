@@ -9,6 +9,19 @@ npm install @cbechstein-digital/capacitor-media
 npx cap sync
 ```
 
+## Setup
+
+#### Angular:
+To get a dummy response on the web, add the following to your `angular.json` under `projects.<PROJECT_NAME>.architect.build.options.assets`:
+```angular2html
+{
+    "glob": "**/*.png",
+    "input": "node_modules/@cbechstein-digital/capacitor-media/src/assets/web/",
+    "output": "./assets/plugins/capacitor-media/web"
+}
+```
+
+
 ## API
 
 <docgen-index>
@@ -24,14 +37,16 @@ npx cap sync
 ### getLatestVideoThumbnailFromAlbum(...)
 
 ```typescript
-getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOptions) => Promise<{ value: string; }>
+getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOptions) => Promise<GetLatestVideoThumbnailFromAlbumResults>
 ```
 
-| Param         | Type                                                                                                        |
-| ------------- | ----------------------------------------------------------------------------------------------------------- |
-| **`options`** | <code><a href="#getlatestvideothumbnailfromalbumoptions">GetLatestVideoThumbnailFromAlbumOptions</a></code> |
+Returns a thumbnail from the newest video in a specific album
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+| Param         | Type                                                                                                        | Description                                               |
+| ------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| **`options`** | <code><a href="#getlatestvideothumbnailfromalbumoptions">GetLatestVideoThumbnailFromAlbumOptions</a></code> | – The album name and the size of the resulting thumbnail. |
+
+**Returns:** <code>Promise&lt;<a href="#getlatestvideothumbnailfromalbumresults">GetLatestVideoThumbnailFromAlbumResults</a>&gt;</code>
 
 --------------------
 
@@ -39,10 +54,26 @@ getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOption
 ### Interfaces
 
 
+#### GetLatestVideoThumbnailFromAlbumResults
+
+| Prop        | Type                |
+| ----------- | ------------------- |
+| **`value`** | <code>string</code> |
+
+
 #### GetLatestVideoThumbnailFromAlbumOptions
 
-| Prop            | Type                |
-| --------------- | ------------------- |
-| **`albumName`** | <code>string</code> |
+| Prop            | Type                                                    |
+| --------------- | ------------------------------------------------------- |
+| **`albumName`** | <code>string</code>                                     |
+| **`size`**      | <code><a href="#thumbnailsize">ThumbnailSize</a></code> |
+
+
+#### ThumbnailSize
+
+| Prop         | Type                |
+| ------------ | ------------------- |
+| **`width`**  | <code>number</code> |
+| **`height`** | <code>number</code> |
 
 </docgen-api>
