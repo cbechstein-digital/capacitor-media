@@ -1,8 +1,10 @@
 package com.bechstein.media;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
@@ -46,6 +48,19 @@ public class CapacitorMediaPlugin extends Plugin {
             _getLatestVideoThumbnailFromAlbum(call);
         } else {
             requestAllPermissions(call, "permissionCallback");
+        }
+    }
+
+    @PluginMethod
+    public void openPhotosApp(PluginCall call) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        try {
+            getContext().startActivity(intent);
+            call.resolve();
+        } catch (Exception e) {
+            Log.d(TAG, e.getMessage());
+            call.reject("The photos app could not be opened");
+            return;
         }
     }
 
