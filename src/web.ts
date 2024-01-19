@@ -12,6 +12,11 @@ export class CapacitorMediaWeb extends WebPlugin implements CapacitorMediaPlugin
     return this.convertImageToBase64();
   }
 
+  public openPhotosApp(): Promise<void> {
+    console.log('[CapacitorMediaWeb] The method is not implemented on the web');
+    return Promise.resolve();
+  }
+
   private async convertImageToBase64(): Promise<GetLatestVideoThumbnailFromAlbumResults> {
     try {
       const response = await fetch('assets/plugins/capacitor-media/web/placeholder.png', {

@@ -27,6 +27,7 @@ To get a dummy response on the web, add the following to your `angular.json` und
 <docgen-index>
 
 * [`getLatestVideoThumbnailFromAlbum(...)`](#getlatestvideothumbnailfromalbum)
+* [`openPhotosApp()`](#openphotosapp)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -42,11 +43,22 @@ getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOption
 
 Returns a thumbnail from the newest video in a specific album
 
-| Param         | Type                                                                                                        | Description                                               |
-| ------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| **`options`** | <code><a href="#getlatestvideothumbnailfromalbumoptions">GetLatestVideoThumbnailFromAlbumOptions</a></code> | – The album name and the size of the resulting thumbnail. |
+| Param         | Type                                                                                                        | Description                                                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#getlatestvideothumbnailfromalbumoptions">GetLatestVideoThumbnailFromAlbumOptions</a></code> | – The album name and the size of the resulting thumbnail. The album name is not supported and will be ignored on Android. |
 
 **Returns:** <code>Promise&lt;<a href="#getlatestvideothumbnailfromalbumresults">GetLatestVideoThumbnailFromAlbumResults</a>&gt;</code>
+
+--------------------
+
+
+### openPhotosApp()
+
+```typescript
+openPhotosApp() => Promise<void>
+```
+
+Opens the photos app of the phone
 
 --------------------
 

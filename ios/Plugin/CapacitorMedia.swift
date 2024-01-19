@@ -25,6 +25,25 @@ import AVFoundation
         }
     }
     
+    public func openPhotosApp(completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let url = URL(string: "photos-redirect://") else {
+            completion(.failure(PhotoOpenerError.invalidURL))
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:]) { success in
+                if success {
+                    completion(.success(()))
+                } else {
+                    completion(.failure(PhotoOpenerError.cannotOpenURL))
+                }
+            }
+        } else {
+            completion(.failure(PhotoOpenerError.unableToOpenURL))
+        }
+    }
+    
     private func fetchAlbum(withName albumName: String, withWidth width: Int, withHeight height: Int, completion: @escaping (PHAssetCollection?) -> Void) {
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
@@ -72,3 +91,10 @@ import AVFoundation
         }
     }
 }
+
+enum PhotoOpenerError: Error {
+    case invalidURL
+    case cannotOpenURL
+    case unableToOpenURL
+}
+

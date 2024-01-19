@@ -29,4 +29,16 @@ public class CapacitorMediaPlugin: CAPPlugin {
             }
         }
     }
+    
+    @objc func openPhotosApp(_ call: CAPPluginCall) {
+        implementation.openPhotosApp { result in
+            switch result {
+                case .success:
+                    call.resolve()
+                case .failure(let error):
+                    call.reject("The photos app could not be opened")
+                    return
+            }
+        }
+    }
 }

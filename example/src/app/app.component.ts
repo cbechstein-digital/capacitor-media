@@ -4,10 +4,12 @@ import {CapacitorMedia} from "@cbechstein-digital/capacitor-media";
 import {
   IonApp,
   IonButton,
+  IonCol,
   IonContent,
   IonGrid,
   IonHeader,
   IonRow,
+  IonText,
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
@@ -16,7 +18,7 @@ import {Subject} from "rxjs";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [IonApp, IonContent, IonHeader, IonToolbar, IonTitle, AsyncPipe, NgIf, IonGrid, IonRow, IonButton],
+  imports: [IonApp, IonContent, IonHeader, IonToolbar, IonTitle, AsyncPipe, NgIf, IonGrid, IonRow, IonButton, IonCol, IonText],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -33,5 +35,9 @@ export class AppComponent {
     })
       .then((result: { value: string }) => this.thumbnailSourceSubject.next(result.value))
       .catch((error: any) => console.warn(error));
+  }
+
+  openPhotosApp(): void {
+    void CapacitorMedia.openPhotosApp();
   }
 }

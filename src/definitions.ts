@@ -16,6 +16,16 @@ export interface CapacitorMediaPlugin {
    * })
    */
   getLatestVideoThumbnailFromAlbum(options: GetLatestVideoThumbnailFromAlbumOptions): Promise<GetLatestVideoThumbnailFromAlbumResults>
+
+  /**
+   * Opens the photos app of the phone
+   *
+   * @method
+   *
+   * @example
+   * CapacitorMedia.openPhotosApp()
+   */
+  openPhotosApp(): Promise<void>
 }
 
 
