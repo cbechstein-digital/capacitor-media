@@ -18,7 +18,6 @@ export class CapacitorMediaWeb extends WebPlugin implements CapacitorMediaPlugin
         headers: { 'Accept': 'image/png' }
       });
       const blob = await response.blob();
-      console.log(blob.type)
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onloadend = () => resolve({ value: reader.result as string });

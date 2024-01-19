@@ -3,8 +3,8 @@ export interface CapacitorMediaPlugin {
    * Returns a thumbnail from the newest video in a specific album
    *
    * @method
-   * @param {GetLatestVideoThumbnailFromAlbumOptions} options – The album name and the size of the resulting thumbnail.
-   * @returns {GetLatestVideoThumbnailFromAlbumResults} The resulting video thumbnail with the specified dimensions.
+   * @param {GetLatestVideoThumbnailFromAlbumOptions} options – The album name and the size of the resulting thumbnail. The album name is not supported and will be ignored on Android.
+   * @returns {GetLatestVideoThumbnailFromAlbumResults} – The resulting video thumbnail with the specified dimensions.
    *
    * @example
    * CapacitorMedia.getLatestVideoThumbnailFromAlbum({
