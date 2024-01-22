@@ -21,6 +21,30 @@ To get a dummy response on the web, add the following to your `angular.json` und
 }
 ```
 
+## Permissions
+The required permissions for the plugin are as follows:
+
+On `Android`, add the following two permissions to your `androidManifest.xml` inside the `manifest` tag:
+```
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+      android:maxSdkVersion="32" />
+<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+```
+
+On `iOS`, add the following key to your `Info.plist` file with a description about why does your app needs this permission:
+```
+<dict>
+    .
+    .
+    .
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>To show the thumbnail of the latest recorded video in the app</string>
+    .
+    .
+    .
+</dict>
+```
+Replace the description between `string` based on your need.
 
 ## API
 
